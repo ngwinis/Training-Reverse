@@ -1,3 +1,43 @@
+# THUẬT TOÁN RC4
+
+## **[1]** Tổng quan
+RC4 là một thuật toán mã hóa dòng tạo ra một chuỗi bit giả ngẫu nhiên (keystream). Việc mã hóa và giải mã đều được thực hiện bằng cách XOR chuỗi keystream này với bản rõ hoặc bản mã.
+
+Thuật toán RC4 có hai giai đoạn chính:
+- **Key-Scheduling Algorithm (KSA):**<br>
+Thuật toán KSA được dùng để khởi tạo mảng hoán vị S. Độ dài khóa (keylength) là số byte trong khóa, có thể từ 1 đến 256 (thường là 5 đến 16 byte, tương đương 40–128 bit). Đầu tiên, mảng S được khởi tạo theo hoán vị đơn vị. Sau đó, S được trộn qua 256 vòng lặp, đồng thời kết hợp với từng byte của khóa.
+    ```
+    for i từ 0 đến 255:
+        S[i] := i
+    j := 0
+    for i từ 0 đến 255:
+        j := (j + S[i] + key[i mod keylength]) mod 256
+        hoán đổi S[i] và S[j]
+    ```
+- **Pseudo-Random Generation Algorithm (PRGA):**<br>
+Thuật toán PRGA tạo keystream bằng cách thay đổi trạng thái S và xuất ra từng byte một. Mỗi vòng lặp:
+    - Tăng i
+    - Cộng giá trị S[i] vào j
+    - Hoán đổi S[i] và S[j]
+    - Tính chỉ số t = (S[i] + S[j]) mod 256
+    - Giá trị keystream K = S[t]
+    ```
+    i := 0
+    j := 0
+    trong khi cần sinh output:
+        i := (i + 1) mod 256
+        j := (j + S[i]) mod 256
+        hoán đổi S[i] và S[j]
+        t := (S[i] + S[j]) mod 256
+        K := S[t]
+        xuất K
+    ```
+    - Cuối cùng chuỗi K[0], K[1], ... được XOR với bản rõ để tạo ra bản mã: `ciphertext[i] = plaintext[i] ^ K[i]`
+
+## **[2]** Code mô phỏng bằng MASM
+- **Source:** [RC4 Algorithm](RC4\rc4.asm)
+- **Code:**
+```
 .386
 .model flat, stdcall
 option casemap: none
@@ -273,3 +313,8 @@ hex_done:
 ConvertToHex ENDP
 
 end start
+```
+
+## **[3]** Tài liệu tham khảo
+- *Thuật toán:* [Wiki - RC4](https://en.wikipedia.org/wiki/RC4)
+- *Code masm:* [masm - YouTube](https://www.youtube.com/playlist?list=PLan2CeTAw3pFOq5qc9urw8w7R-kvAT8Yb)
