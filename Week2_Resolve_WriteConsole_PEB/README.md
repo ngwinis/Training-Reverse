@@ -1,3 +1,85 @@
+# Resolve địa chỉ hàm
+## **[1] TỔNG QUAN**
+### **1.1. Cách mà một chương trình được chạy**
+- Thông thường khi code masm, chúng ta hay import thư viện `kernel32.lib` rồi gọi hàm cần thiết trong quá trình sử dụng (ví dụ `call ExitProccess`). Lúc này trình linker không gắn địa chỉ thật vào lệnh `call ExitProcess` mà sẽ tạo một **entry trong Import Table** và thêm mã để gọi qua **Indirect Call** thông qua IAT (Import Address Table).
+- Trong PE file:
+  - Có phần `.idata` chứa tên DLL (`kernel32.dll`) và các hàm cần import (`ExitProcess`, `CreateFileA`, v.v.).
+  - Có một bảng con trỏ gọi là **Import Address Table (IAT)**.
+  - Khi chương trình chạy, Windows loader sẽ:
+    - Load `kernel32.dll` nếu chưa có.
+    - Tìm offset của `ExitProcess` trong bảng Export của `kernel32.dll`.
+    - Ghi địa chỉ thực của `ExitProcess` vào ô tương ứng trong IAT.
+  - Lúc chương trình gọi `ExitProcess`, thực ra nó gọi qua con trỏ trong IAT, ví dụ:</br>`call dword ptr [__imp__ExitProcess]`
+- Vậy 1 câu hỏi đặt ra là nếu chúng ta không muốn phụ thuộc vào Windows loader thì sao?
+> => Chúng ta sẽ **tự resolve địa chỉ** các hàm một cách thủ công.
+### **1.2. Ý tưởng code**
+- [Nguyên lý hoạt động](LyThuyet.md)
+- Các cấu trúc struct được sử dụng trong phần mô tả này:
+  - Struct liên quan đến **PEB**
+    ```
+    typedef struct _PEB_LDR_DATA {
+        ULONG Length;
+        BOOLEAN Initialized;
+        PVOID SsHandle;
+        LIST_ENTRY InLoadOrderModuleList;        // DLLs theo thứ tự load
+        LIST_ENTRY InMemoryOrderModuleList;      // DLLs theo thứ tự xuất hiện trong bộ nhớ
+        LIST_ENTRY InInitializationOrderModuleList;
+    } PEB_LDR_DATA, *PPEB_LDR_DATA;
+
+    typedef struct _UNICODE_STRING {
+        USHORT Length;
+        USHORT MaximumLength;
+        PWSTR Buffer;
+    } UNICODE_STRING;
+
+    typedef struct _LDR_DATA_TABLE_ENTRY {
+        LIST_ENTRY InLoadOrderLinks;
+        LIST_ENTRY InMemoryOrderLinks;
+        LIST_ENTRY InInitializationOrderLinks;
+        PVOID DllBase;                           // Base address của DLL
+        PVOID EntryPoint;
+        ULONG SizeOfImage;
+        UNICODE_STRING FullDllName;
+        UNICODE_STRING BaseDllName;             // Tên DLL (ví dụ "kernel32.dll")
+        // ... còn nhiều nữa
+    } LDR_DATA_TABLE_ENTRY, *PLDR_DATA_TABLE_ENTRY;
+
+    typedef struct _PEB {
+        BYTE Reserved1[2];
+        BYTE BeingDebugged;
+        BYTE Reserved2[1];
+        PVOID Reserved3[2];
+        PPEB_LDR_DATA Ldr;                       // Con trỏ đến danh sách module đã load
+        // ...
+    } PEB, *PPEB;
+    ```
+  - Struct Export Directory
+    ```
+    pub struct IMAGE_EXPORT_DIRECTORY {
+        pub Characteristics: u32,
+        pub TimeDateStamp: u32,
+        pub MajorVersion: u16,
+        pub MinorVersion: u16,
+        pub Name: u32,
+        pub Base: u32,
+        pub NumberOfFunctions: u32,
+        pub NumberOfNames: u32,
+        pub AddressOfFunctions: u32,
+        pub AddressOfNames: u32,
+        pub AddressOfNameOrdinals: u32,
+    }
+    ```
+- Chi tiết các bước cần làm:
+  - **B1:** Tìm base address của `kernel32.dll` (thường phải leak từ PEB hoặc thông qua `fs:[30h]`).
+    - `PEB -> Ldr -> InMemoryOrderModuleList` (Lấy thông tin dll)
+    - `LDR_DATA_TABLE_ENTRY.BaseDllName` (Tên dll)
+    - `LDR_DATA_TABLE_ENTRY.DllBase` (Base address của dll)
+  - **B2:** Tìm `Export Directory` thông qua PE header:</br>
+    `Base + Offset đến IMAGE_EXPORT_DIRECTORY`
+  - **B3:** Duyệt danh sách tên hàm, so sánh từng cái với tên hàm cần dùng (`ExitProcess`) --> lấy index.
+  - **B4:** Dùng index đó để lấy address tương ứng từ bảng `AddressOfFunctions`.
+## **[2] CODE MÔ PHỎNG BẰNG ASM**
+```
 .386
 .model flat, stdcall
 option casemap:none
@@ -170,5 +252,13 @@ got_getprocaddress:
     ; Kết thúc chương trình
     push 0                       ; EXIT_SUCCESS
     call [_ExitProcess]
+        
+    ; Thoát chương trình với mã lỗi
+    mov eax, 1
+    ret
 
 end start
+```
+## **[3] Tài liệu tham khảo**
+- [Địa chỉ Kernel32.dll và các hàm API](https://sec.vnpt.vn/2023/07/tim-dia-chi-kernel32-dll-va-cac-ham-api/)
+- [Cấu trúc IMAGE_EXPORT_DIRECTORY](https://microsoft.github.io/windows-docs-rs/doc/windows/Win32/System/SystemServices/struct.IMAGE_EXPORT_DIRECTORY.html)
