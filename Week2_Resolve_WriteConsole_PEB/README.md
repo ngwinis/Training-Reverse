@@ -252,10 +252,6 @@ got_getprocaddress:
     ; Kết thúc chương trình
     push 0                       ; EXIT_SUCCESS
     call [_ExitProcess]
-        
-    ; Thoát chương trình với mã lỗi
-    mov eax, 1
-    ret
 
 end start
 ```
