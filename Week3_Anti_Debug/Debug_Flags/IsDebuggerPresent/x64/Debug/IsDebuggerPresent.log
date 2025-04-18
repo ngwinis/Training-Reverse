@@ -1,0 +1,12 @@
+﻿  Assembling IsDebuggerPresent.asm...
+IsDebuggerPresent.asm(1): error A2008: syntax error : .
+IsDebuggerPresent.asm(2): error A2008: syntax error : .
+IsDebuggerPresent.asm(30): error A2008: syntax error : fs
+IsDebuggerPresent.asm(37): error A2070: invalid instruction operands
+IsDebuggerPresent.asm(38): error A2070: invalid instruction operands
+IsDebuggerPresent.asm(39): error A2070: invalid instruction operands
+IsDebuggerPresent.asm(40): error A2070: invalid instruction operands
+IsDebuggerPresent.asm(46): error A2008: syntax error : start
+IsDebuggerPresent.asm(46): error A2088: END directive required at end of file
+IsDebuggerPresent.asm(34): error A2006: undefined symbol : being_debugged
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"x64\Debug\IsDebuggerPresent.obj" /I "C:\Irvine" /W3 /errorReport:prompt  /TaIsDebuggerPresent.asm" exited with code 1.
