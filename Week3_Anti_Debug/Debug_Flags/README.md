@@ -1,6 +1,7 @@
 # DEBUG FLAGS
 ## **[1] IsDebuggerPresent() và PEB!BeingDebugged Flag**
 - Trong cấu trúc của PEB, có 1 trường tên là `BeingDebugged`.
+</br>
 ![alt text](../__images__/isdebuggerpresent-1.png)
 - Khi 1 chương trình được tải vào bộ nhớ, giá trị của trường này sẽ được đặt, nếu là giá trị 0 thì chương trình này đang không bị debug và ngược lại.
 - Hàm `IsDebuggerPresent()` dựa trên flag `BeingDebugged` để return giá trị 0 (không bị debug) hoặc 1 (đang bị debug).
