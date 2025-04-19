@@ -35,4 +35,4 @@
 - Nếu giá trị trả về là `0` thì chương trình đang bị debug và ngược lại là giá trị `1`.
 - Class này còn liên hệ trực tiếp tới một trường có tên là `NoDebugInherit` (thuộc struct [EPROCESS](https://www.nirsoft.net/kernel_struct/vista/EPROCESS.html)). Trường này mặc định là `1`, có nghĩa là ngăn debugger truyền xuống process con, tương ứng giá trị `ProcessInformation` là `1`, và ngược lại với giá trị `0`.
 
-### ***2.3***
+### ***2.3 ProcessDebugObjectHandle***
