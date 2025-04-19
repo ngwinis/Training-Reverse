@@ -1,5 +1,5 @@
 # DEBUG FLAGS
-## **[1] IsDebuggerPresent() và PEB!BeingDebugged Flag**
+## **[1] `IsDebuggerPresent()` và `PEB!BeingDebugged` Flag**
 - Trong cấu trúc của PEB, có 1 trường tên là `BeingDebugged`.
 
   ![alt text](../__images__/isdebuggerpresent-1.png)
@@ -10,3 +10,21 @@
 > **Code C**: [Detect Debugger C](IsDebuggerPresent/C_language_example/IsDebuggerPresent.c)
 
 > **Code MASM 32bit**: [Detect Debugger MASM](IsDebuggerPresent/IsDebuggerPresent.asm)
+
+## **[2]`NtQueryInformationProcess()`**
+- Hàm `NtQueryInformationProcess()` có các tham số như sau:
+
+  ![alt text](../__images__/ntqueryinformationprocess-1.png)
+
+- Hàm này có thể trả về rất nhiều loại thông tin khác nhau từ 1 tiến trình. Trong đó:
+  - `ProcessInformationClass` là 1 enum tương tự như 1 hằng và có các id riêng gán với từng phần tử trong enum này (chi tiết có thể xem: [PROCESSINFOCLASS](https://ntdoc.m417z.com/processinfoclass)).
+  - `ProcessInformation` là output của `ProcessInformationClass`. Giá trị trả về của trường này sẽ phụ thuộc vào `ProcessInformationClass`. Điều đó có nghĩa là chúng ta sẽ cần phải ép kiểu phù hợp để nhận được thông tin mong muốn.
+
+### ***2.1 ProcessDebugPort***
+- Trong `ProcessInformationClass`, `id=7` tương ứng với `ProcessDebugPort`. Trường này sẽ trả về giá trị `-1` nếu chương trình đang bị debug, ngược lại giá trị trả về của nó = `0`.
+  
+  ![alt text](../__images__/ntqueryinformationprocess-2.png)
+
+- Để nhận giá trị trả về của `ProcessInformationClass`, ta sẽ phải ép kiểu `DWORD` (hay `LONG_PTR`) nếu muốn check debug, vì giá trị trả về `0` hoặc `-1` thuộc kiểu `DWORD`.
+
+### ***2.2 ProcessDebugFlags***
