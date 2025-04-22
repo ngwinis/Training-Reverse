@@ -1,0 +1,10 @@
+﻿  CreateFile.c
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Object_Handles\CreateFileA\CreateFile.c(52,13): warning C4473: 'scanf_s' : not enough arguments passed for format string
+  D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Object_Handles\CreateFileA\CreateFile.c(52,13):
+  placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+  D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Object_Handles\CreateFileA\CreateFile.c(52,13):
+  the missing variadic argument 2 is required by format string '%c'
+  D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Object_Handles\CreateFileA\CreateFile.c(52,13):
+  this argument is used as a buffer size
+  
+  CreateFileA.vcxproj -> D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Object_Handles\CreateFileA\Debug\CreateFileA.exe
