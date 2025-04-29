@@ -18,3 +18,18 @@ Các phương pháp sau đây cố tình gây ra ngoại lệ để xác minh xe
   ![alt text](../__images__/unhandleexceptionfilter-2.png)
 
 ## **[2] `RaiseException()`**
+  ![alt text](../__images__/raiseexception-1.png)
+- Các exceptions như `DBG_Control_C` hoặc `DBG_RIPEVENT` không được chuyển tới exception handlers của process hiện tại và được debugger sử dụng. Điều này cho phép chúng ta đăng ký một trình xử lý ngoại lệ, đưa ra các ngoại lệ này bằng cách sử dụng hàm `kernel32!RaiseException()` và kiểm tra xem điều khiển có được chuyển đến process của chúng ta hay không. Nếu exception handlers không được gọi thì quá trình này có thể đang được gỡ lỗi.
+- Để làm được điều này, ta sẽ truyền vào tham số đầu tiên của hàm `RaiseException()` một mã ngoại lệ `DBG_CONTROL_C` hoặc `DBG_RIPEVENT`. Khi hàm này được gọi, tiến trình sẽ kiểm tra ngoại lệ tương ứng, nếu có ngoại lệ xảy ra, nó sẽ so sánh ngoại lệ đó với hàm [GetExceptionCode](https://learn.microsoft.com/en-us/windows/win32/debug/getexceptioncode). Hàm này không có tham số đầu vào và sẽ return ra các mã lỗi ngoại lệ. Dưới đây là một số ngoại lệ với mã lỗi và mô tả tương ứng.
+
+  ![alt text](../__images__/raiseexception-2.png)
+
+- Sau khi kiểm tra xong, nếu đúng mã lỗi ngoại lệ như đã kiểm tra, nó sẽ chạy khối xử lý ngoại lệ sau đó, nếu không sẽ bỏ qua và tìm một exception handler khác.
+
+## **[3] Ẩn luồng điều khiển với Exception Handlers**
+- Ở kỹ thuật này, chúng ta sẽ **không detect debugger** mà sẽ **lợi dụng exception handler** để tạo ra các ngoại lệ. Với mỗi ngoại lệ được xử lý sẽ gọi tới một hàm tạo ra các ngoại lệ khác.
+- Mục tiêu của kỹ thuật này là để ẩn đi luồng thực thi cũng như đoạn chương trình thực sự được thực hiện.
+- Kỹ thuật này chủ yếu gây rối debugger và tránh phân tích tĩnh:
+  - Code không có `jmp`, không có `call`, không có `if`.
+  - Control flow diễn ra qua exception.
+  - Debugger step-by-step sẽ khó trace hoặc miss logic thật.
