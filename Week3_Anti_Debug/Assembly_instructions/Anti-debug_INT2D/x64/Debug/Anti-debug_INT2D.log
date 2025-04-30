@@ -1,0 +1,9 @@
+﻿  Anti-debug_INT2D.cpp
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Assembly_instructions\Anti-debug_INT2D\Anti-debug_INT2D.cpp(8,9): error C4235: nonstandard extension used: '__asm' keyword not supported on this architecture
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Assembly_instructions\Anti-debug_INT2D\Anti-debug_INT2D.cpp(8,19): error C2065: 'eax': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Assembly_instructions\Anti-debug_INT2D\Anti-debug_INT2D.cpp(8,22): error C3192: syntax error: '^' is not a prefix operator (did you mean '*'?)
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Assembly_instructions\Anti-debug_INT2D\Anti-debug_INT2D.cpp(9,9): error C4235: nonstandard extension used: '__asm' keyword not supported on this architecture
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Assembly_instructions\Anti-debug_INT2D\Anti-debug_INT2D.cpp(8,24): error C2065: 'eax': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Assembly_instructions\Anti-debug_INT2D\Anti-debug_INT2D.cpp(9,15): error C2144: syntax error: 'int' should be preceded by ';'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Assembly_instructions\Anti-debug_INT2D\Anti-debug_INT2D.cpp(9,19): error C2059: syntax error: 'constant'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Assembly_instructions\Anti-debug_INT2D\Anti-debug_INT2D.cpp(10,9): error C4235: nonstandard extension used: '__asm' keyword not supported on this architecture
