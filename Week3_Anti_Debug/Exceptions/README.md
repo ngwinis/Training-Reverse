@@ -17,6 +17,8 @@ Các phương pháp sau đây cố tình gây ra ngoại lệ để xác minh xe
 
   ![alt text](../__images__/unhandleexceptionfilter-2.png)
 
+  > Code: [Anti-debug UnhandedExceptionFilter()](UnhandledExceptionFilter/Anti-debug_UnhandledExceptionFilter.cpp)
+
 ## **[2] `RaiseException()`**
   ![alt text](../__images__/raiseexception-1.png)
 - Các exceptions như `DBG_Control_C` hoặc `DBG_RIPEVENT` không được chuyển tới exception handlers của process hiện tại và được debugger sử dụng. Điều này cho phép chúng ta đăng ký một trình xử lý ngoại lệ, đưa ra các ngoại lệ này bằng cách sử dụng hàm `kernel32!RaiseException()` và kiểm tra xem điều khiển có được chuyển đến process của chúng ta hay không. Nếu exception handlers không được gọi thì quá trình này có thể đang được gỡ lỗi.
