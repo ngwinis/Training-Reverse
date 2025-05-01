@@ -28,6 +28,8 @@ Các phương pháp sau đây cố tình gây ra ngoại lệ để xác minh xe
 
 - Sau khi kiểm tra xong, nếu đúng mã lỗi ngoại lệ như đã kiểm tra, nó sẽ chạy khối xử lý ngoại lệ sau đó, nếu không sẽ bỏ qua và tìm một exception handler khác.
 
+  > Code: [Anti-debug RaiseException()](RaiseException/Anti-debug_RaiseException.cpp)
+
 ## **[3] Ẩn luồng điều khiển với Exception Handlers**
 - Ở kỹ thuật này, chúng ta sẽ **không detect debugger** mà sẽ **lợi dụng exception handler** để tạo ra các ngoại lệ. Với mỗi ngoại lệ được xử lý sẽ gọi tới một hàm tạo ra các ngoại lệ khác.
 - Mục tiêu của kỹ thuật này là để ẩn đi luồng thực thi cũng như đoạn chương trình thực sự được thực hiện.
@@ -35,3 +37,5 @@ Các phương pháp sau đây cố tình gây ra ngoại lệ để xác minh xe
   - Code không có `jmp`, không có `call`, không có `if`.
   - Control flow diễn ra qua exception.
   - Debugger step-by-step sẽ khó trace hoặc miss logic thật.
+
+  > Code: 
