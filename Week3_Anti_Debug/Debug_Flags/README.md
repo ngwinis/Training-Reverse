@@ -7,9 +7,9 @@
 - Hàm `IsDebuggerPresent()` dựa trên flag `BeingDebugged` để return giá trị 0 (không bị debug) hoặc 1 (đang bị debug).
 - Nói cách khác, nếu muốn kiểm tra chương trình có đang bị gắn debugger hay không thì kiểm tra trực tiếp giá trị của trường `BeingDebugged` trong cấu trúc PEB.
 
-> **Code C**: [Detect Debugger C](IsDebuggerPresent/C_language_example/IsDebuggerPresent.c)
+  > **Code C**: [Detect Debugger C](IsDebuggerPresent/C_language_example/IsDebuggerPresent.c)
 
-> **Code MASM 32bit**: [Detect Debugger MASM](IsDebuggerPresent/IsDebuggerPresent.asm)
+  > **Code MASM 32bit**: [Detect Debugger MASM](IsDebuggerPresent/IsDebuggerPresent.asm)
 
 ## **[2]`NtQueryInformationProcess()`**
 - Hàm `NtQueryInformationProcess()` có các tham số như sau:
@@ -26,6 +26,10 @@
   ![alt text](../__images__/ntqueryinformationprocess-2.png)
 
 - Để nhận giá trị trả về của `ProcessInformationClass`, ta sẽ phải ép kiểu `DWORD` (hay `LONG_PTR`) nếu muốn check debug, vì giá trị trả về `0` hoặc `-1` thuộc kiểu `DWORD`.
+
+  > Code C++: [Detect Debugger C++](NtQueryInformationProcess/DebugPort/C_language_example/DebugPort/Anti-debug_DebugPort.cpp)
+
+  > Code masm-32: [Detect Debugger MASM](NtQueryInformationProcess/DebugPort/Anti-debug_DebugPort.asm)
 
 ### ***2.2 ProcessDebugFlags***
 - Tương tự với mục ***2.1***, class `ProcessDebugFlags` có `id=0x1f`. Giá trị trả về thông qua `ProcessInformation` thuộc kiểu `DWORD`.
