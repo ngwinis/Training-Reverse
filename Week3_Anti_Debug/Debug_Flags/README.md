@@ -39,6 +39,10 @@
 - Nếu giá trị trả về là `0` thì chương trình đang bị debug và ngược lại là giá trị `1`.
 - Class này còn liên hệ trực tiếp tới một trường có tên là `NoDebugInherit` (thuộc struct [EPROCESS](https://www.nirsoft.net/kernel_struct/vista/EPROCESS.html)). Trường này mặc định là `1`, có nghĩa là ngăn debugger truyền xuống process con, tương ứng giá trị `ProcessInformation` là `1`, và ngược lại với giá trị `0`.
 
+  > Code C++: [Detect Debugger C++](NtQueryInformationProcess/ProcessDebugFlags/ProcessDebugFlags_C/Anti-debug_ProcessDebugFlags_C.cpp)
+  
+  > Code MASM: [Detect Debugger MASM](NtQueryInformationProcess/ProcessDebugFlags/ProcessDebugFlags_MASM/ProcessDebugFlags_MASM.asm)
+
 ### ***2.3 ProcessDebugObjectHandle***
 - Khi bắt đầu debug, một đối tượng kernel "debug object" được tạo ra và ta có thể query được giá trị của handle này.
 - Tương tự với 2 mục trên, class `ProcessInformationClass` nhận vào `id=0x1e` (tức là `ProcessDebugObjectHandle`) và trả ra `ProcessInformation` 1 giá trị kiểu `Handle`
