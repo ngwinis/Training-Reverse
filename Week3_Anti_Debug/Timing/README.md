@@ -27,9 +27,9 @@ Thực tế khi đang debug, luôn luôn có 1 khoảng delay khá lớn (so v�
 - Gọi hàm này 2 lần, mỗi lần truyền tham số kiểu `LPSYSTEMTIME` để truy xuất thời gian tại 2 thời điểm đó, sau đó tiếp tục truy xuất thời gian ra 1 struct [FILETIME](https://learn.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-filetime) có 64-bit length.
 - Sau khi đã truy xuất xong, tiến hành lấy hiệu giữa thời gian sau và thời gian trước rồi so sánh với "native" delay sẽ có thể nghi ngờ debugger đang chạy.
 
-  > Code: 
+  > Code: [Anti-debug GetLocalTime()](GetLocalTime/Anti-debug_GetLocalTime.cpp)
 
 ## **[3] `GetTickCount()`**
 - Hàm này có cùng ý tưởng với mục **[2]**, nhưng thay vì ghi thời gian vào biến thông qua truyền tham chiếu như `GetLocalTime()` hay `GetSystemTime()`, nó trả về trực tiếp một giá trị kiểu `DWORD`. Nhờ đó, ta có thể sử dụng ngay giá trị này để tính và so sánh thời gian trôi qua với "native" delay mà không cần xử lý trung gian.
 
-  > Code: 
+  > Code: [Anti-debug GetTickCount()](GetTickCount/Anti-debug_GetTickCount.cpp)
