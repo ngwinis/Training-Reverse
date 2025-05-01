@@ -49,3 +49,7 @@
 - Nếu kết quả trả về khác `NULL` thì chương trình đang bị debug và ngược lại.
 
   ![alt text](../__images__/ntqueryinformationprocess-4.png)
+
+  > Code C++: [Detect Debugger C++](NtQueryInformationProcess/ProcessDebugObjectHandle/ProcessDebugObjectHandle_C/ProcessDebugObjectHandle_C/ProcessDebugObjectHandle_C.cpp)
+
+  > Code MASM: [Detect Debugger MASM](NtQueryInformationProcess/ProcessDebugObjectHandle/ProcessDebugObjectHandle_MASM/ProcessDebugObjectHandle_MASM.asm)
