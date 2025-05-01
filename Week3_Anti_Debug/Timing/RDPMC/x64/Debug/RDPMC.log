@@ -1,0 +1,31 @@
+﻿  Anti-debug_RDPMC.cpp
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(18,9): error C4235: nonstandard extension used: '__asm' keyword not supported on this architecture
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(20,13): error C2065: 'mov': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(20,17): error C2146: syntax error: missing ';' before identifier 'ecx'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(20,17): error C2065: 'ecx': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(21,13): error C2146: syntax error: missing ';' before identifier 'rdpmc'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(21,13): error C2065: 'rdpmc': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(22,13): error C2146: syntax error: missing ';' before identifier 'mov'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(22,13): error C2065: 'mov': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(22,17): error C2146: syntax error: missing ';' before identifier 'Start'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(22,32): error C2065: 'eax': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(23,13): error C2146: syntax error: missing ';' before identifier 'mov'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(23,13): error C2065: 'mov': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(23,17): error C2146: syntax error: missing ';' before identifier 'Start'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(23,33): error C2065: 'edx': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(24,9): error C2143: syntax error: missing ';' before '}'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(28,9): error C4235: nonstandard extension used: '__asm' keyword not supported on this architecture
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(30,13): error C2065: 'mov': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(30,17): error C2146: syntax error: missing ';' before identifier 'ecx'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(30,17): error C2065: 'ecx': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(31,13): error C2146: syntax error: missing ';' before identifier 'rdpmc'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(31,13): error C2065: 'rdpmc': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(32,13): error C2146: syntax error: missing ';' before identifier 'mov'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(32,13): error C2065: 'mov': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(32,17): error C2146: syntax error: missing ';' before identifier 'End'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(32,30): error C2065: 'eax': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(33,13): error C2146: syntax error: missing ';' before identifier 'mov'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(33,13): error C2065: 'mov': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(33,17): error C2146: syntax error: missing ';' before identifier 'End'
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(33,31): error C2065: 'edx': undeclared identifier
+D:\LEARNING\VNPT\Training-Reverse\Week3_Anti_Debug\Timing\RDPMC\Anti-debug_RDPMC.cpp(34,9): error C2143: syntax error: missing ';' before '}'
