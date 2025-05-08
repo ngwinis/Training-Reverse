@@ -100,7 +100,7 @@
 
   ![alt text](../__images__/winAPI.png)
 
-- Tuy nhiên, khi xref tới các hàm này, không thấy có dấu hiệu anti debug, thay đổi luông chương trình hay bất cứ 1 sự thay đổi nào, mà nó đơn giản chỉ đăng ký 1 ExceptionFilter, đồng thời kiểm tra với hàm `IsDebuggerPresent()` và thay đổi giá trị của 1 biến.
+- Tuy nhiên, khi xref tới các hàm này, không thấy có dấu hiệu anti debug, thay đổi luồng chương trình hay bất cứ 1 sự thay đổi nào, mà nó đơn giản chỉ đăng ký 1 ExceptionFilter, đồng thời kiểm tra với hàm `IsDebuggerPresent()` và thay đổi giá trị của 1 biến.
 
   ![alt text](../__images__/IsDebuggerPresent.png)
 
