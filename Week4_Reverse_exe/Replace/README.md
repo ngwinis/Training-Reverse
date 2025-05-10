@@ -8,7 +8,7 @@
   - Dòng 12 khởi tạo key cho quá trình mã hoá
   - Dòng 18-20 yêu cầu người dùng nhập `input`
   - Dòng 23-28 thêm padding `'\n'` nếu `len(input)` không chia hết cho 8
-  - Dòng 29-40 kiểm tra input nhập vào có đúng `flag` hay không
+  - Dòng 29-40 kiểm tra input nhập vào có đúng `flag` hay không. Input được kiểm tra theo từng block 8 byte và so sánh với biến `Buf2` được gán giá trị ở dòng 17.
 - Hàm mã hoá được gọi ở dòng 31, truyền vào `Buffer` (hay input) và `key`, hàm này mã hoá xor cơ bản như sau:
   
   ![alt text](../__images__/replace_2.png)
