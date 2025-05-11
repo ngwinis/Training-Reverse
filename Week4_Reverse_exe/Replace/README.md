@@ -1,4 +1,4 @@
-# Replace.exe
+# WriteUp Replace.exe
 ## **[1] Phân tích**
 - Khi load file PE vào IDA ta sẽ thấy có hàm `main()` khá clear như sau:
   
