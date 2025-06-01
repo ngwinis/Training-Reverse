@@ -1,4 +1,5 @@
-# Anti-Debugging
+# WriteUp Anti-Debugging
+
 ## **[1] Ý tưởng chung:**
 - Nếu chạy chương trình thì hên xui sẽ nhận được flag ngay, nhưng khả năng cực kỳ thấp
 
