@@ -37,7 +37,7 @@ Thuật toán PRGA tạo keystream bằng cách thay đổi trạng thái S và 
 ## **[2]** Code mô phỏng bằng MASM
 - **Source:** [RC4 Algorithm](RC4\rc4.asm)
 - **Code:**
-```
+```asm
 .386
 .model flat, stdcall
 option casemap: none

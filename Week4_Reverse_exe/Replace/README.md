@@ -54,7 +54,7 @@
 - **Hàm mã hoá thật** chính là thuật toán mã hoá **TEA (Tiny Encryption Algorithm)**, tham số truyền vào vẫn là `Buffer` và `key`.
 - Sử dụng python để giải mã thuật toán này sẽ có được flag:
   
-  ```
+  ```python
   def decrypt_tea(encrypted_buffer, key):
       import struct
       result = []

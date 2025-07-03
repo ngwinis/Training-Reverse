@@ -109,7 +109,7 @@
 - Cách solve của bài này là giải mã lần lượt từ các hàm mã hoá `enc4()` về `enc1()`, vì có 1 số dữ liệu có thể bị ghi đè
 - Sau đây là code solve bằng python:
   
-  ```
+  ```python
   byte_624082 = 0xAB
   byte_624083 = 0xCD
   key_xor_dword_624658 = [0xC0, 0xFE, 0x13, 0x37][::-1]

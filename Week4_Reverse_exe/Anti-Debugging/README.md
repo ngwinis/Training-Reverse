@@ -164,7 +164,7 @@
 ## **[3] Solve**
 - Vì các case đều random và yêu cầu phải debug với các cách riêng biệt, hơn nữa các key đều đã có sẵn, nên chúng ta không cần thiết phải debug, mặc dù ý tưởng ban đầu là thế
 - Cách solve là lấy các key và xor với tất cả các block 4 byte của flag và tìm xem block nào có cả 4 ký tự đều đọc được thì đó chính là key tương ứng của block đó
-  ```
+  ```python
   cipher = [0x6ab4a0c7, 0x72b7b7d4, 0x349da1da, 0x3a94ecc4, 0xe5700a45, 0x38b2b080, 0x6694a3b3, 0x179f8ba3]
   key_tlscallback = 0x81000700 ^ 0xEFBEADDE
   key_case0 = 0x656E6F67

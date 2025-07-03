@@ -16,7 +16,7 @@
 - [Nguyên lý hoạt động](LyThuyet.md)
 - Các cấu trúc struct được sử dụng trong phần mô tả này:
   - Struct liên quan đến **PEB**
-    ```
+    ```C
     typedef struct _PEB_LDR_DATA {
         ULONG Length;
         BOOLEAN Initialized;
@@ -54,7 +54,7 @@
     } PEB, *PPEB;
     ```
   - Struct Export Directory
-    ```
+    ```C
     pub struct IMAGE_EXPORT_DIRECTORY {
         pub Characteristics: u32,
         pub TimeDateStamp: u32,
@@ -67,7 +67,7 @@
         pub AddressOfFunctions: u32,
         pub AddressOfNames: u32,
         pub AddressOfNameOrdinals: u32,
-    }
+    };
     ```
 - Chi tiết các bước cần làm:
   - **B1:** Tìm base address của `kernel32.dll` (thường phải leak từ PEB hoặc thông qua `fs:[30h]`).
@@ -79,7 +79,7 @@
   - **B3:** Duyệt danh sách tên hàm, so sánh từng cái với tên hàm cần dùng (`ExitProcess`) --> lấy index.
   - **B4:** Dùng index đó để lấy address tương ứng từ bảng `AddressOfFunctions`.
 ## **[2] CODE MÔ PHỎNG BẰNG ASM**
-```
+```asm
 .386
 .model flat, stdcall
 option casemap:none

@@ -35,7 +35,7 @@
 - Sau khi đã có được `key` và `cipher`, ta có thể dễ dàng reverse lại để tìm `plaintext`.
 - Do rc4 là thuật toán mã hoá đối xứng, nên chúng ta có thể sử dụng luôn code mã hoá này, truyền `cipher` và `key` thì ouput chính là `plaintext`.
 - Sau đây ta có thể dùng python để giải mã `cipher`.
-    ```
+    ```python
     def rc4_init(key: bytes) -> list:
         S = list(range(256))
         j = 0

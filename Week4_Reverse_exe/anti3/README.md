@@ -102,7 +102,7 @@ Sau tất cả các case chúng ta thấy rằng chương trình sẽ đều g�
 ## **[3] Solve**
 - Lấy nguyên hàm `alter_char()` của chương trình và code lại các switch case tương ứng nhằm xử lý dữ liệu để lấy được key đúng.
 
-    ```
+    ```python
     def gen_const(a1: int, a2: bytearray, a3: int) -> int:
         v4 = a3 - 1
         v18 = 171

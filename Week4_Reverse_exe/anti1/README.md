@@ -74,7 +74,7 @@
 ## **[2] Solve**
 - Vì mã hoá sử dụng xor đơn giản nên ta cũng chỉ cần lấy `key` và `ciphertext` xor ngược lại là sẽ ra flag
 - Code:
-  ```
+  ```python
   def dec(cipher, key):
       i = 0
       plain = ''
