@@ -79,7 +79,7 @@
 - Thay vì làm thủ công như trên, ta có thể thêm vào database các mã hash sử dụng số đối của các data tương ứng theo các bước sau:
     - Query tất cả các hàm liên quan ứng với thuật toán hash cần chọn (ở đây là thuật toán crc32).
     - Lấy số đối của mã hash vừa query rồi sau đó append lại data đó vào trong database.<br>
-    --> Công thức tính số đối: `custom_hash = (-hash_val) % 0xFFFFFFFF + 1` trong đó `hash_val` là 1 thuộc tính giá trị mã hash có trong database.
+    --> Công thức tính số đối: `custom_hash = (-hash_val) % 0xFFFFFFFF + 1` trong đó `hash_val` là 1 thuộc tính giá trị mã hash có trong database. [Code append data](append_db.py)
     - Sử dụng shellcode như cách làm phía trên và import database vừa update.
 
     ![alt text](images/19.png)
