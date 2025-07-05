@@ -95,7 +95,14 @@
 
         ![alt text](images/21.png)
 
-- Code resolve: [resolve API - IDA python](appcall.py)
-- Kết quả sau khi chạy:
+- Code resolve:
+    - `Cách 1:` [resolve API - Tìm lệnh mov ecx](appcall.py)
+        - Kết quả sau khi chạy:
 
-    ![alt text](images/22.png)
+            ![alt text](images/22.png)
+    
+    - `Cách 2:` [resolve API - Tìm tham số được truyền](appcall_get_arg.py)
+        - Lưu ý ở cách số 2: Trước khi run code, click đúp vào hàm `resolve_dll()` --> chọn `Edit` --> `Functions` --> `Set type` để định nghĩa prototype hàm này; làm tương tự với hàm `resolve_func()`
+        - Kết quả sau khi chạy:
+
+            ![alt text](images/23.png)
