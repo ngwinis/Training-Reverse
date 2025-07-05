@@ -75,3 +75,27 @@
 - Cách làm là chuột phải tại mã hash đó --> click `-<giá trị hash tương ứng>` hoặc sử dụng phím tắt `shift` + `-` --> chuột phải tại mã hash đó --> click `HashDB Lookup` rồi chú ý bảng Output hiển thị tên hàm được query.
 
     ![alt text](images/18.png)
+
+- Thay vì làm thủ công như trên, ta có thể thêm vào database các mã hash sử dụng số đối của các data tương ứng theo các bước sau:
+    - Query tất cả các hàm liên quan ứng với thuật toán hash cần chọn (ở đây là thuật toán crc32).
+    - Lấy số đối của mã hash vừa query rồi sau đó append lại data đó vào trong database.<br>
+    --> Công thức tính số đối: `custom_hash = (-hash_val) % 0xFFFFFFFF + 1` trong đó `hash_val` là 1 thuộc tính giá trị mã hash có trong database.
+    - Sử dụng shellcode như cách làm phía trên và import database vừa update.
+
+    ![alt text](images/19.png)
+
+## [4] Sử dụng Appcall và IDA python
+- Ngoài cách resolve dll và các API bằng việc query CSDL, ta có thể dùng cách làm đã đề cập ở mục **1.1**, debug và nhấn phím F8 để chạy qua các hàm resolve và xem nó trả về tên API là gì, địa chỉ của tên hàm này được lưu tại thanh ghi `eax`
+- Tuy nhiên, nếu debug thủ công sẽ mất rất nhiều thời gian, vì thế có thể dùng IDA python để tự động hoá quá trình tìm kiếm mã hash, sau đó call các hàm resolve và in ra giá trị trả về. Các bước thực hiện:
+    - Call `resolve_dll()` với tham số là mã hash của dll tìm được trước mỗi lệnh call, hàm này trả về 1 đối tượng, trong đó có 1 thuộc tính `__at__` lưu địa chỉ trả về của kết quả, hay chính là giá trị tại thanh ghi `eax`
+
+        ![alt text](images/20.png)
+    
+    - Hàm `resolve_func()` được gọi ngay sau đó với tham số thứ nhất là địa chỉ của dll vừa resolve được, tham số thứ 2 là mã hash, kết quả trả về của hàm này là địa chỉ của API, muốn lấy được tên hàm thì có thể sử dụng `ida_name.get_name()` và truyền vào địa chỉ của API.
+
+        ![alt text](images/21.png)
+
+- Code resolve: [resolve API - IDA python](appcall.py)
+- Kết quả sau khi chạy:
+
+    ![alt text](images/22.png)
