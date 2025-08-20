@@ -6,7 +6,7 @@ import ida_bytes
 
 # địa chỉ thật thay thế tại đây
 resolve_dll_addr = 0x00F41DF0
-resolve_func_addr = 0x00F41F10
+resolve_api_addr = 0x00F41F10
 
 # thu thập xref resolve_dll
 dll_xrefs = []
@@ -17,14 +17,14 @@ while xref != idaapi.BADADDR:
 
 print(f"[*] Found {len(dll_xrefs)} xref(s) to resolve_dll")
 
-# thu thập xref resolve_func
+# thu thập xref resolve_api
 func_xrefs = []
-xref = ida_xref.get_first_fcref_to(resolve_func_addr)
+xref = ida_xref.get_first_fcref_to(resolve_api_addr)
 while xref != idaapi.BADADDR:
     func_xrefs.append(xref)
-    xref = ida_xref.get_next_fcref_to(resolve_func_addr, xref)
+    xref = ida_xref.get_next_fcref_to(resolve_api_addr, xref)
 
-print(f"[*] Found {len(func_xrefs)} xref(s) to resolve_func")
+print(f"[*] Found {len(func_xrefs)} xref(s) to resolve_api")
 
 # xử lý resolve_dll
 dll_list = []
@@ -59,9 +59,9 @@ for call_addr in dll_xrefs:
     except Exception as e:
         print(f"  appcall failed: {e}")
 
-# xử lý resolve_func
+# xử lý resolve_api
 for dll, call_addr in zip(dll_list, func_xrefs):
-    print(f"[resolve_func] call at 0x{call_addr:X}")
+    print(f"[resolve_api] call at 0x{call_addr:X}")
     args = idaapi.get_arg_addrs(call_addr)
     if not args or len(args) < 2:
         print(f"  cannot get arguments at 0x{call_addr:X}")
@@ -82,7 +82,7 @@ for dll, call_addr in zip(dll_list, func_xrefs):
         continue
 
     try:
-        x = idaapi.Appcall.resolve_func(dll, hash_val)
+        x = idaapi.Appcall.resolve_api(dll, hash_val)
         func_name = ida_name.get_name(x)
         idaapi.set_cmt(call_addr, f"resolved func 0x{hash_val:X} -> {func_name}", 0)
         print(f"  resolved func 0x{hash_val:X} -> 0x{x:X} -> {func_name}")

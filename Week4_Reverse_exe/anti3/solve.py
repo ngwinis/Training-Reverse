@@ -1,4 +1,4 @@
-def gen_const(a1: int, a2: bytearray, a3: int) -> int:
+def alter_char(a1: int, a2: bytearray, a3: int) -> int:
     v4 = a3 - 1
     v18 = 171
     v6 = 0
@@ -55,9 +55,9 @@ for i in range(38):
     g = g_const[i]
     p = program[i]
     if p in (1, 4, 5):
-        tmp = gen_const(0, default_const, g)
+        tmp = alter_char(0, default_const, g)
     elif p in (2, 3, 6, 7):
-        tmp = gen_const(1, default_const, g)
+        tmp = alter_char(1, default_const, g)
     else:
         continue
     key[index_table[i]] = cipher[i] ^ tmp
