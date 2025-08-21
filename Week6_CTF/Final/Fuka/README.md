@@ -42,7 +42,9 @@
         ![alt text](../../images/fuka-8.png)
 
     - Kiểm tra qua các hàm được gọi trong đoạn code này, debug để xem các input truyền vào là gì và output trả ra là gì để dự đoán hành vi của chúng.
+
         ![alt text](../../images/fuka-15.png)
+        
         - Tại dòng 38, hàm này thực hiện các thao tác như sau:
             - Đầu tiên nó nhận vào 3 tham số, trong đó có 2 tham số cần lưu ý:
 
