@@ -7,7 +7,7 @@
 
 - Có thể thấy trong DIE thì file này đã bị obfuscate. Để deobfuscate, mình đã sử dụng tool de4dot.
 
-
+    ![alt text](../../images/mix14.png)
 
 - Sau khi đã deobfuscate xong sẽ sinh ra một file `Mixihihi-cleaned.exe`.
 - Vì file này được mix giữa C# và C++ nên mình load nó vào tool dnSpy.
