@@ -2,8 +2,6 @@
 
 Trong Reverse Engineering và malware analysis, Injection thường ám chỉ các kỹ thuật `code injection` hay `process injection` - tức là đưa một đoạn code (thường là shellcode, dll, hoặc payload) vào một tiến trình khác hoặc vào tiến trình đang chạy. Có nhiều kỹ thuật phổ biến, được chia thành các nhóm như sau:
 
-<hr>
-
 ## **[1] DLL Injection**
 - DLL Injection là kỹ thuật cho phép kẻ tấn công nạp một thư viện DLL vào tiến trình hợp pháp để thực thi mã độc trong ngữ cảnh của tiến trình đó. Cách phổ biến là ghi đường dẫn DLL vào bộ nhớ tiến trình đích (dùng `VirtualAllocEx`, `WriteProcessMemory`), rồi tạo luồng mới (`CreateRemoteThread`) gọi `LoadLibrary` để nạp DLL.
 - Dll injection có nhiều biến thể:
