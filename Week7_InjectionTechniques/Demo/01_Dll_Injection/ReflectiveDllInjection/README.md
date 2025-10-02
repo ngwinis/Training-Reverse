@@ -425,9 +425,9 @@ Dưới đây là các bước lần lượt để nạp 1 file dll vào bộ nh
 - DIE đã phát hiện đây là 1 file dll được compile bằng C/C++ và build bởi Visual Studio 2022.
 - Vì file dll mình build chỉ có kích thước 12KB nên mình đã thử mở cả file dll và file binary 12KB dump được bằng công cụ HxD để đối chiếu thì thấy 1 số đoạn của chúng khá giống nhau:
 
-  ![alt text](../../images/reflectiveinjection07.png)
+  ![alt text](../../images/reflectiveinjection09.png)
 
-  ![alt text](../../images/reflectiveinjection08.png)
+  ![alt text](../../images/reflectiveinjection10.png)
 
 ## [5] PHỤ LỤC
 
