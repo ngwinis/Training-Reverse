@@ -11,7 +11,7 @@ Trong Reverse Engineering và malware analysis, Injection thường ám chỉ c�
 
 > Demo: [Classic Dll Injection](Demo/01_Dll_Injection/Dll_Injection)
 
-> Demo: [Reflective Dll Injection](Demo/01_Dll_Injection/Reflective_Dll_Injection/)
+> Demo: [Reflective Dll Injection](Demo/01_Dll_Injection/ReflectiveDllInjection/)
 
 ## **[2] PE Injection**
 - PE Injection là kỹ thuật nạp một tệp thực thi (PE, có thể không tồn tại trên đĩa) vào bộ nhớ của tiến trình hợp pháp để thực thi trong ngữ cảnh của tiến trình đó. Quá trình thường gồm: cấp phát vùng nhớ (`VirtualAllocEx`), ghi dữ liệu PE vào (`WriteProcessMemory`), rồi kích hoạt bằng `CreateRemoteThread` hoặc shellcode. Vì PE cần ánh xạ lại header, section và relocation, nên kỹ thuật này phức tạp hơn tiêm shellcode.
