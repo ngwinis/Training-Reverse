@@ -1,0 +1,4 @@
+﻿  ReflectiveLoader.cpp
+D:\LEARNING\VNPT\Training-Reverse\Week7_InjectionTechniques\Demo\01_Dll_Injection\ReflectiveDll\ReflectiveLoader.cpp(118,35): error C3861: '_MoveFromCoprocessor': identifier not found
+  (compiling source file '/ReflectiveLoader.cpp')
+  

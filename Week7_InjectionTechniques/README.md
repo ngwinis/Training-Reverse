@@ -9,7 +9,9 @@ Trong Reverse Engineering và malware analysis, Injection thường ám chỉ c�
     - **DLL Hollowing / Module Stomping**: nạp DLL hợp lệ, sau đó ghi đè entry point bằng mã độc để che giấu.
 - Nhờ chạy trong tiến trình hợp pháp, DLL injection giúp kẻ tấn công truy cập tài nguyên, tăng đặc quyền và né tránh nhiều cơ chế phòng thủ.
 
-> Demo: [Dll Injection](Demo/01_Dll_Injection)
+> Demo: [Classic Dll Injection](Demo/01_Dll_Injection/Dll_Injection)
+
+> Demo: [Reflective Dll Injection](Demo/01_Dll_Injection/Reflective_Dll_Injection/)
 
 ## **[2] PE Injection**
 - PE Injection là kỹ thuật nạp một tệp thực thi (PE, có thể không tồn tại trên đĩa) vào bộ nhớ của tiến trình hợp pháp để thực thi trong ngữ cảnh của tiến trình đó. Quá trình thường gồm: cấp phát vùng nhớ (`VirtualAllocEx`), ghi dữ liệu PE vào (`WriteProcessMemory`), rồi kích hoạt bằng `CreateRemoteThread` hoặc shellcode. Vì PE cần ánh xạ lại header, section và relocation, nên kỹ thuật này phức tạp hơn tiêm shellcode.
